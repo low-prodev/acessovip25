@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Obrigada pela Compra!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      background: radial-gradient(circle at center, #4d0037 0%, #1a0014 50%, #000 100%);
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(255, 26, 191, 0.25) 0%, transparent 80%);
+      filter: blur(80px);
+      animation: glowBackground 6s ease-in-out infinite alternate;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      width: 100%;
+      max-width: 420px;
+      margin: auto;
+      padding: 28px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      width: 100%;
+    }
+
+    .step[hidden] {
+      display: none;
+    }
+
+    h1 {
+      font-size: clamp(18px, 5vw, 24px);
+      font-weight: 500;
+      text-shadow: 0 0 18px rgba(255, 26, 191, 0.7);
+      animation: fadeIn 1s ease-in-out;
+      margin: 0;
+    }
+
+    p {
+      font-size: 16px;
+      color: #ddd;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 26, 191, 0.5);
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+      font-family: inherit;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    input:focus {
+      border-color: #ff4fd8;
+      box-shadow: 0 0 14px rgba(255, 26, 191, 0.5);
+    }
+
+    .err {
+      color: #ff8fb8;
+      font-size: 14px;
+    }
+
+    .err[hidden] {
+      display: none;
+    }
+
+    .btn {
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(90deg, #ff1abf, #ff4fd8);
+      color: #fff;
+      padding: 16px 45px;
+      border: none;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 0 25px rgba(255, 26, 191, 0.5);
+      transition: all 0.3s ease;
+      z-index: 1;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 26, 191, 0.35) 0%, transparent 80%);
+      animation: pulse 3s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .btn span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 45px rgba(255, 26, 191, 0.9);
+    }
+
+    .note {
+      font-size: 12px;
+      color: #999;
+      line-height: 1.5;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.2); }
+      100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+    }
+
+    @keyframes glowBackground {
+      0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+      100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.2); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+  <!-- Meta Pixel Code (base). O init e o Purchase são disparados no script no fim da página, -->
+  <!-- depois que o visitante preenche os dados, para enviar tudo em um único evento. -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1787317879347060&ev=Purchase&cd[value]=25.00&cd[currency]=BRL&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Etapa 1: dados do cliente -->
+    <div class="step" id="step-form">
+      <h1>Compra Confirmada com Sucesso! 🎉</h1>
+      <p>Informe seus dados para liberar o acesso ao conteúdo:</p>
+
+      <form id="dados" novalidate>
+        <input type="email" id="email" placeholder="Seu e-mail" autocomplete="email" inputmode="email" />
+        <input type="tel" id="tel" placeholder="Seu WhatsApp com DDD" autocomplete="tel" inputmode="tel" />
+        <p class="err" id="err" role="alert" hidden></p>
+        <button class="btn" type="submit"><span>Confirmar e acessar</span></button>
+      </form>
+
+      <p class="note">🔒 Seus dados estão seguros: são protegidos por criptografia antes do envio e usados apenas para medir resultados e melhorar anúncios.</p>
+    </div>
+
+    <!-- Etapa 2: entrega -->
+    <div class="step" id="step-access" hidden>
+      <h1>Compra Confirmada com Sucesso! 🎉</h1>
+      <p>Toque no botão abaixo para acessar seu conteúdo exclusivo:</p>
+      <a class="btn" id="btn-acesso" href="https://drive.google.com/drive/folders/1uUZ2Q0w1J7tmE8nIukOKi5agXnnoqmFE?usp=drive_link"><span>Acessar Conteúdo</span></a>
+    </div>
+
+    <!-- Etapa 3: acesso já utilizado neste navegador -->
+    <div class="step" id="step-used" hidden>
+      <h1>Acesso já liberado</h1>
+      <p>O acesso ao conteúdo já foi utilizado neste dispositivo.</p>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      var PIXEL_ID = '1787317879347060';
+      var VALOR = 25.00;
+      // Chaves próprias desta página (o sufixo evita conflito com as outras páginas de compra no mesmo domínio).
+      var KEY = 'purchase_fired_' + PIXEL_ID + '_25';
+      var USED_KEY = 'acesso_usado_' + PIXEL_ID + '_25';
+
+      var stepForm = document.getElementById('step-form');
+      var stepAccess = document.getElementById('step-access');
+      var stepUsed = document.getElementById('step-used');
+      var btnAcesso = document.getElementById('btn-acesso');
+      var form = document.getElementById('dados');
+      var err = document.getElementById('err');
+
+      function showAccess() {
+        stepForm.hidden = true;
+        stepAccess.hidden = false;
+      }
+
+      function showError(msg) {
+        err.textContent = msg;
+        err.hidden = false;
+      }
+
+      // Dispara o Purchase uma única vez por navegador.
+      // userData vai no init: o Pixel converte em hash (SHA-256) automaticamente antes de enviar.
+      function firePurchase(userData) {
+        try { if (localStorage.getItem(KEY)) return; } catch (e) {}
+
+        if (userData && Object.keys(userData).length) {
+          fbq('init', PIXEL_ID, userData);
+        } else {
+          fbq('init', PIXEL_ID);
+        }
+
+        fbq('track', 'Purchase', {
+          value: VALOR,
+          currency: 'BRL'
+        }, {
+          eventID: 'purchase_' + Date.now()
+        });
+
+        try { localStorage.setItem(KEY, '1'); } catch (e) {}
+      }
+
+      // E-mail: minúsculo e sem espaços.
+      function normEmail(v) {
+        v = (v || '').trim().toLowerCase();
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? v : '';
+      }
+
+      // Telefone: só números, com DDI 55 (Brasil), sem zeros à esquerda.
+      function normPhone(v) {
+        var d = (v || '').replace(/\D/g, '').replace(/^0+/, '');
+        if (d.length === 10 || d.length === 11) d = '55' + d;
+        if ((d.length === 12 || d.length === 13) && d.indexOf('55') === 0) return d;
+        return '';
+      }
+
+      // Acesso de uso único (por navegador): depois do primeiro clique no botão, ele não aparece mais.
+      function markUsed() {
+        try { localStorage.setItem(USED_KEY, '1'); } catch (e) {}
+      }
+      btnAcesso.addEventListener('click', markUsed);
+      btnAcesso.addEventListener('auxclick', markUsed);
+
+      function applyState() {
+        try {
+          if (localStorage.getItem(USED_KEY)) {
+            stepForm.hidden = true;
+            stepAccess.hidden = true;
+            stepUsed.hidden = false;
+          } else if (localStorage.getItem(KEY)) {
+            showAccess();
+          }
+        } catch (e) {}
+      }
+      applyState();
+      // Ao voltar pelo botão "voltar" do navegador, a página pode vir do cache: reaplica o estado.
+      window.addEventListener('pageshow', applyState);
+
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        err.hidden = true;
+
+        var em = normEmail(document.getElementById('email').value);
+        var ph = normPhone(document.getElementById('tel').value);
+
+        if (!em) { showError('Informe um e-mail válido.'); return; }
+        if (!ph) { showError('Informe um WhatsApp válido com DDD. Ex.: 11 91234-5678'); return; }
+
+        firePurchase({ em: em, ph: ph });
+        showAccess();
+      });
+
+    })();
+  </script>
+</body>
+</html>
